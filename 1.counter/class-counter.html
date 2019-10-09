@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Counter</title>
+  <link rel="stylesheet" href="counter.css">
+</head>
+
+<body>
+  <div class="container">
+    <button class="increase">+</button>
+    <div class="counter">0</div>
+    <button class="decrease">-</button>
+  </div>
+
+  <script>
+    class CounterController {
+      constructor() {
+        this.increase = this.increase.bind(this);
+        this.decrease = this.decrease.bind(this);
+      }
+
+      num = 0;
+
+      increase () {
+        document.querySelector('.counter').textContent = ++this.num;
+      }
+
+      decrease () {
+        if(this.num <= 0) return;
+        document.querySelector('.counter').textContent = --this.num;
+      }
+
+    };
+    
+    const counter = new CounterController(0);
+
+    document.querySelector('.increase').onclick = counter.increase;
+    document.querySelector('.decrease').onclick = counter.decrease;
+  </script>
+</body>
+
+</html>
